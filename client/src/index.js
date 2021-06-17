@@ -1,10 +1,12 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import Navbar from "./components/navigation/navbar/Navbar";
+
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Navbar />
+  </Provider>,
   document.getElementById("root")
 );
