@@ -17,7 +17,8 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 // Else
 import { Link } from "react-router-dom";
-
+import { addProductToCart } from "../../store/actions/cartActions";
+import { useDispatch } from "react-redux";
 // Styles
 const useStyles = makeStyles({
   media: {
@@ -46,6 +47,7 @@ const useStyles = makeStyles({
 
 const ProductCard = ({ product }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <Grid item xs={12} md={6} lg={4} xl={3}>
@@ -69,7 +71,12 @@ const ProductCard = ({ product }) => {
           <Box className={classes.right}>
             <span className={classes.price}>{product.price} kr</span>
             <small className={classes.vat}>Incl. Vat</small>
-            <IconButton className={classes.buybutton}>
+            <IconButton
+              className={classes.buybutton}
+              onClick={() => {
+                dispatch(addProductToCart(product, 1));
+              }}
+            >
               <AddShoppingCartIcon />
             </IconButton>
           </Box>

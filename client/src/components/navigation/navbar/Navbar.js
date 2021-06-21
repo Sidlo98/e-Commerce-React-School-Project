@@ -25,12 +25,14 @@ import Login from "../../../views/Login";
 import Products from "../../../views/Products";
 import ProductDetails from "../../../views/ProductDetails";
 import Register from "../../../views/Register";
+import CheckOut from "../../../views/CheckOut";
 
 // Else
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 // styles
 const useStyles = makeStyles((theme) => ({
@@ -80,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = ({ window }) => {
   const classes = useStyles();
+  const totalQuantity = useSelector((state) => state.cartReducer.totalQuantity);
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
@@ -116,7 +119,7 @@ const Navbar = ({ window }) => {
             </Typography>
 
             <IconButton color="inherit" onClick={handleCartDrawerToggle}>
-              <Badge badgeContent={2} color={"error"}>
+              <Badge badgeContent={totalQuantity} color={"error"}>
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
@@ -183,6 +186,7 @@ const Navbar = ({ window }) => {
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/checkout" component={CheckOut} />
           </Switch>
         </main>
       </div>

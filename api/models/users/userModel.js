@@ -39,7 +39,6 @@ exports.registerUser = (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         passwordHash: hash,
-        points: 0,
       });
 
       newUser

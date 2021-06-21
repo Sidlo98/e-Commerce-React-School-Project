@@ -18,6 +18,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getProduct, clearProduct } from "../store/actions/productActions";
+import { addProductToCart } from "../store/actions/cartActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,14 +86,18 @@ const ProductDetails = () => {
               type="number"
               InputProps={{
                 inputProps: {
-                  min: "1",
+                  min: 1,
                 },
               }}
               variant="outlined"
               defaultValue={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
-            <IconButton>
+            <IconButton
+              onClick={() =>
+                dispatch(addProductToCart(product, parseInt(amount)))
+              }
+            >
               <AddShoppingCartIcon />
             </IconButton>
           </CardActions>
