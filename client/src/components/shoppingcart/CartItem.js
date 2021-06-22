@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
   },
   cardMedia: {
-    width: "100%",
+    width: "247px",
     height: "200px",
   },
   flex1: {

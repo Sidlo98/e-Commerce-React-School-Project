@@ -129,6 +129,7 @@ exports.addToOrders = (req, res) => {
     }
   });
 };
+
 exports.getUser = (req, res) => {
   User.findOne({ email: req.params.id }).then((user) => {
     if (!user) {

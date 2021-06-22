@@ -1,12 +1,18 @@
 // Mui
-import { Card, Typography, TextField, Button } from "@material-ui/core";
+import {
+  Card,
+  Typography,
+  TextField,
+  Button,
+  CircularProgress,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 // Else
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser, clearRegError } from "../store/actions/userActions";
+import { registerUser } from "../store/actions/userActions";
 
 // Styles
 const useStyles = makeStyles(() => ({
@@ -38,8 +44,9 @@ const useStyles = makeStyles(() => ({
 const Register = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const regError = useSelector((state) => state.userReducer.regError);
+  const loading = useSelector((state) => state.userReducer.loading);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -67,7 +74,7 @@ const Register = () => {
     if (name.length > 1) {
       set({
         error: false,
-        text: "ok!",
+        text: "",
       });
       return false;
     } else {
@@ -93,7 +100,7 @@ const Register = () => {
     } else {
       setEmailError({
         error: false,
-        text: "ok!",
+        text: "",
       });
       return false;
     }
@@ -103,7 +110,7 @@ const Register = () => {
     if (password.length > 5) {
       setPasswordError({
         error: false,
-        text: "ok!",
+        text: "",
       });
       return false;
     } else {
@@ -113,6 +120,13 @@ const Register = () => {
       });
       return true;
     }
+  };
+
+  const regErrorCallback = (regError) => {
+    setEmailError({
+      error: true,
+      text: regError,
+    });
   };
 
   const onSubmit = (e) => {
@@ -135,26 +149,16 @@ const Register = () => {
         email,
         password,
       };
-      dispatch(registerUser(user));
-    }
-    if (!emailError.error) {
+      dispatch(registerUser(user, history, regErrorCallback));
     }
   };
 
-  useEffect(() => {
-    if (regError.length > 0) {
-      setEmailError({
-        error: true,
-        text: regError,
-      });
-    } else {
-      dispatch(clearRegError());
-    }
-  }, [regError, dispatch]);
-
   return (
     <Card className={classes.root}>
-      <Typography variant="h4">Register</Typography>
+      <Typography variant="h4" gutterBottom>
+        Register
+      </Typography>
+      {loading && <CircularProgress />}
       <form className={classes.form} noValidate onSubmit={onSubmit}>
         <TextField
           error={fnameError.error}

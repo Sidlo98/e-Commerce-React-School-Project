@@ -62,7 +62,7 @@ const ShoppingCart = () => {
           <Typography>Total price: {totalPrice} kr</Typography>
           <small className={classes.vat}>Incl. Vat</small>
           <Link to="/checkout" className={classes.navLink}>
-            <Button className={classes.button}>Procced To CheckOut</Button>
+            <Button className={classes.button}>Proceed To CheckOut</Button>
           </Link>
         </Card>
       ) : (

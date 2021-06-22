@@ -18,11 +18,19 @@ const actiontypes = () => {
       clear: "CART_CLEAR",
     },
     user: {
-      login: "USER_LOGIN",
+      set: "USER_SET",
       logout: "USER_LOGOUT",
-      loading: "USER_LOADING",
-      clearRegError: "USER_CLEAR_REG_ERROR",
+
+      loginError: "USER_LOGIN_ERROR",
+      clearLoginError: "USER_CLEAR_LOGIN_ERROR",
+
       regError: "USER_REG_ERROR",
+      clearRegError: "USER_CLEAR_REG_ERROR",
+
+      orderError: "USER_ORDER_ERROR",
+      clearOrderError: "USER_ORDER_CLEAR_ORDER_ERROR",
+
+      loading: "USER_LOADING",
     },
   };
 };

@@ -1,9 +1,17 @@
 // Mui
-import { Card, Typography, TextField, Button } from "@material-ui/core";
+import {
+  Card,
+  Typography,
+  TextField,
+  Button,
+  CircularProgress,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 // Else
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../store/actions/userActions";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -33,24 +41,40 @@ const useStyles = makeStyles(() => ({
 
 const Login = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const loading = useSelector((state) => state.userReducer.loading);
+  const loginError = useSelector((state) => state.userReducer.loginError);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.email.value);
-    console.log(e.target.password.value);
+
+    let user = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    dispatch(login(user, history));
   };
 
   return (
     <Card className={classes.root}>
-      <Typography variant="h4">Login</Typography>
+      <Typography variant="h4" gutterBottom>
+        Login
+      </Typography>
+      {loading && <CircularProgress />}
       <form className={classes.form} noValidate onSubmit={onSubmit}>
         <TextField
+          error={loginError ? true : false}
+          helperText={loginError}
           type="email"
           id="email"
           label="Email"
           className={classes.textField}
         />
         <TextField
+          error={loginError ? true : false}
+          helperText={loginError}
           type="password"
           label="Password"
           id="password"

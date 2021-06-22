@@ -26,11 +26,19 @@ import Products from "../../../views/Products";
 import ProductDetails from "../../../views/ProductDetails";
 import Register from "../../../views/Register";
 import CheckOut from "../../../views/CheckOut";
+import Profile from "../../../views/Profile";
+import Admin from "../../../views/Admin";
 
 // Else
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  ProtectedUserRoute,
+  ProtectedAdminRoute,
+  IfCartIsNotEmpty,
+  IsAlreadyLoggedIn
+} from "../../../routes/ProtectedRoutes";
 
 const drawerWidth = 280;
 
@@ -184,9 +192,11 @@ const Navbar = ({ window }) => {
             <Route exact path="/products" component={Products} />
             <Route exact path="/products/:id" component={ProductDetails} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/checkout" component={CheckOut} />
+            <IsAlreadyLoggedIn exact path="/login" component={Login} />
+            <IsAlreadyLoggedIn exact path="/register" component={Register} />
+            <IfCartIsNotEmpty exact path="/checkout" component={CheckOut} />
+            <ProtectedUserRoute exact path="/profile" component={Profile} />
+            <ProtectedAdminRoute exact path="/admin" component={Admin} />
           </Switch>
         </main>
       </div>
