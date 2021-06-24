@@ -8,6 +8,7 @@ import {
   CssBaseline,
   AppBar,
   Badge,
+  Container
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -37,7 +38,7 @@ import {
   ProtectedUserRoute,
   ProtectedAdminRoute,
   IfCartIsNotEmpty,
-  IsAlreadyLoggedIn
+  IsAlreadyLoggedIn,
 } from "../../../routes/ProtectedRoutes";
 
 const drawerWidth = 280;
@@ -187,17 +188,19 @@ const Navbar = ({ window }) => {
 
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Switch>
-            <Route exact path="/" component={StartPage} />
-            <Route exact path="/products" component={Products} />
-            <Route exact path="/products/:id" component={ProductDetails} />
-            <Route exact path="/about" component={About} />
-            <IsAlreadyLoggedIn exact path="/login" component={Login} />
-            <IsAlreadyLoggedIn exact path="/register" component={Register} />
-            <IfCartIsNotEmpty exact path="/checkout" component={CheckOut} />
-            <ProtectedUserRoute exact path="/profile" component={Profile} />
-            <ProtectedAdminRoute exact path="/admin" component={Admin} />
-          </Switch>
+          <Container>
+            <Switch>
+              <Route exact path="/" component={StartPage} />
+              <Route exact path="/products" component={Products} />
+              <Route exact path="/products/:id" component={ProductDetails} />
+              <Route exact path="/about" component={About} />
+              <IsAlreadyLoggedIn exact path="/login" component={Login} />
+              <IsAlreadyLoggedIn exact path="/register" component={Register} />
+              <IfCartIsNotEmpty exact path="/checkout" component={CheckOut} />
+              <ProtectedUserRoute exact path="/profile" component={Profile} />
+              <ProtectedAdminRoute exact path="/admin" component={Admin} />
+            </Switch>
+          </Container>
         </main>
       </div>
     </Router>

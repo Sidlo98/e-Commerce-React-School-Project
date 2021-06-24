@@ -42,7 +42,7 @@ export const login = (user, history) => {
           };
           dispatch(setUser(activeUser));
           dispatch(clearLoginError());
-          history.push("/");
+          history.push("/profile");
           dispatch(loading(false));
         }, 1500);
       })
@@ -99,7 +99,7 @@ export const updateUser = () => {
           email: res.data.user.email,
           admin: res.data.user.admin,
           orders: res.data.user.orders,
-          token: res.data.token,
+          token,
         };
         dispatch(setUser(activeUser));
       });

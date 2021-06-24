@@ -50,6 +50,13 @@ const useStyles = makeStyles(() => ({
   itemContainer: {
     justifyContent: "center",
   },
+  loadingWrapper: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  loading: {
+    marginTop: "1rem",
+  },
 }));
 
 const CheckOut = () => {
@@ -65,10 +72,16 @@ const CheckOut = () => {
   const order = useSelector((state) => state.cartReducer);
 
   const handleOrder = (order) => {
+    let todayDate = new Date();
     if (isLoggedIn) {
       let newOrder = {
         ...order,
-        date: Date.now(),
+        orderNumber: `WS${todayDate.getFullYear().toString().slice(2)}${Math.floor(
+          Math.random() * 100000
+        )}`,
+        date: `${todayDate.getDate()}/${
+          todayDate.getMonth() + 1
+        }/${todayDate.getFullYear()}`,
         orderRecived: false,
         orderProcessed: false,
         orderShipped: false,
@@ -112,7 +125,11 @@ const CheckOut = () => {
           <Button onClick={() => handleOrder(order)} className={classes.btn}>
             Place Order
           </Button>
-          {loading && <CircularProgress />}
+          {loading && (
+            <div className={classes.loadingWrapper}>
+              <CircularProgress className={classes.loading} />
+            </div>
+          )}
         </Grid>
       </Grid>
     </Paper>

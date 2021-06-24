@@ -9,6 +9,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
+
 // Styles
 const useStyles = makeStyles(() => ({
   root: {

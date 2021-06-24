@@ -57,7 +57,10 @@ const cartReducer = (state = initState, action) => {
       return state;
 
     case actiontypes().cart.clear:
-      state = initState;
+      state.cart = [];
+      state.totalPrice = getTotalPrice(state.cart);
+      state.totalQuantity = getTotalQuantity(state.cart);
+
       return state;
 
     default:
