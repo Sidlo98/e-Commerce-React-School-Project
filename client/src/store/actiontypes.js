@@ -32,6 +32,9 @@ const actiontypes = () => {
 
       loading: "USER_LOADING",
     },
+    admin: {
+      setUsers: "ADMIN_SET_USERS",
+    },
   };
 };
 

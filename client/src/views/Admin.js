@@ -1,21 +1,41 @@
 // Mui
-import { makeStyles } from '@material-ui/core/styles'
-// Else
-import { useSelector } from 'react-redux';
+import { Card, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
+// Else
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getUsers } from "../store/actions/adminActions";
+import UserCard from "../components/admin/UserCard";
 // Styles
 const useStyles = makeStyles(() => ({
   root: {
-
-  }
-}))
+    textAlign: "center",
+    padding: "0.5rem",
+    marginBottom: "1rem",
+  },
+}));
 
 const Admin = () => {
-  return (
-    <div>
-      Admin      
-    </div>
-  )
-}
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-export default Admin
+  const users = useSelector((state) => state.adminReducer.users);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  return (
+    <>
+      <Card className={classes.root}>
+        <Typography variant="h2">Admin Panel</Typography>
+      </Card>
+      {users.map((user) => (
+        <UserCard user={user} key={user._id} />
+      ))}
+    </>
+  );
+};
+
+export default Admin;

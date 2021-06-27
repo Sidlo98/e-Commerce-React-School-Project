@@ -82,7 +82,7 @@ const CheckOut = () => {
         date: `${todayDate.getDate()}/${
           todayDate.getMonth() + 1
         }/${todayDate.getFullYear()}`,
-        orderRecived: false,
+        orderRecived: true,
         orderProcessed: false,
         orderShipped: false,
         orderDelivered: false,

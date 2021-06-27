@@ -1,9 +1,5 @@
 // Mui
-import {
-  Card,
-  Typography,
-  Grid,
-} from "@material-ui/core";
+import { Card, Typography, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 // Else
@@ -19,7 +15,7 @@ const useStyles = makeStyles(() => ({
   },
   orderContainer: {
     marginTop: "1rem",
-  }
+  },
 }));
 
 const Profile = () => {

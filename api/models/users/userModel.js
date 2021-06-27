@@ -150,19 +150,19 @@ exports.getUser = (req, res) => {
 };
 
 exports.getAllUsers = (req, res) => {
-  User.findAll().then((users) => {
-    if (!users) {
+  User.find({}, (err, data) => {
+    if (err) {
       return res.status(400).json({
         statusCode: 400,
         status: false,
-        message: "You made a bad request.",
+        message: "You made a bad request. lol",
       });
     } else {
       return res.status(200).json({
         statusCode: 200,
         status: true,
         message: "Getting users Successfully",
-        users,
+        users: data,
       });
     }
   });
