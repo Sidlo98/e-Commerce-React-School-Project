@@ -8,7 +8,7 @@ import {
   CssBaseline,
   AppBar,
   Badge,
-  Container
+  Container,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -29,6 +29,7 @@ import Register from "../../../views/Register";
 import CheckOut from "../../../views/CheckOut";
 import Profile from "../../../views/Profile";
 import Admin from "../../../views/Admin";
+import ThanksForPurchase from "../../../views/ThanksForPurchase";
 
 // Else
 import { useState } from "react";
@@ -194,6 +195,7 @@ const Navbar = ({ window }) => {
               <Route exact path="/products" component={Products} />
               <Route exact path="/products/:id" component={ProductDetails} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/thanks/:id" component={ThanksForPurchase} />
               <IsAlreadyLoggedIn exact path="/login" component={Login} />
               <IsAlreadyLoggedIn exact path="/register" component={Register} />
               <IfCartIsNotEmpty exact path="/checkout" component={CheckOut} />

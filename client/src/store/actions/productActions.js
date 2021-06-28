@@ -28,6 +28,6 @@ export const loading = (payload) => {
 
 export const clearProduct = () => {
   return {
-    type: actiontypes().product.clear
-  }
-}
+    type: actiontypes().product.clear,
+  };
+};

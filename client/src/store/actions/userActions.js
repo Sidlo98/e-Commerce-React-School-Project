@@ -70,7 +70,7 @@ export const addToOrder = (order, history) => {
           dispatch(updateUser());
           dispatch(clearOrderError());
           dispatch(clearCart());
-          history.push("/profile");
+          history.push(`/thanks/${order.orderNumber}`);
           dispatch(loading(false));
         }, 1500);
       })

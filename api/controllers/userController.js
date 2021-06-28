@@ -8,5 +8,6 @@ router.post("/login", userModel.loginUser);
 router.patch("/addorder/:id", auth.verifyToken, userModel.addToOrders);
 
 router.get("/admin/all", auth.verifyTokenAndAdmin, userModel.getAllUsers);
+router.patch('/admin/updateOrders/:id', auth.verifyTokenAndAdmin, userModel.updateOrders)
 
 module.exports = router;

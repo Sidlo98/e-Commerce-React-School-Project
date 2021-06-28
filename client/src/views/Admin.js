@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUsers } from "../store/actions/adminActions";
 import UserCard from "../components/admin/UserCard";
+
 // Styles
 const useStyles = makeStyles(() => ({
   root: {

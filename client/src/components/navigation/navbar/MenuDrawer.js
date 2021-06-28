@@ -18,6 +18,7 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../../store/actions/userActions";
+import { clearAdmin } from "../../../store/actions/adminActions";
 import "./menudrawer.css";
 
 // styles
@@ -44,6 +45,11 @@ const MenuDrawer = () => {
 
   const user = useSelector((state) => state.userReducer.user.token);
   const isAdmin = useSelector((state) => state.userReducer.user.admin);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(clearAdmin());
+  };
 
   return (
     <div>
@@ -103,7 +109,7 @@ const MenuDrawer = () => {
               to="/"
               className={classes.navlink}
               onClick={() => {
-                dispatch(logout());
+                handleLogout();
               }}
             >
               <ListItem

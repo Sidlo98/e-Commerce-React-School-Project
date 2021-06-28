@@ -167,3 +167,32 @@ exports.getAllUsers = (req, res) => {
     }
   });
 };
+
+exports.updateOrders = (req, res) => {
+  User.exists({ _id: req.params.id }, (err, result) => {
+    if (err) {
+      return res.status(400).json({
+        statusCode: 400,
+        status: false,
+        message: "You made a bad request.",
+      });
+    }
+    if (result) {
+      User.updateOne({ _id: req.params.id }, { orders: req.body })
+        .then(() => {
+          res.status(200).json({
+            statusCode: 200,
+            status: true,
+            message: "orders updated successfully.",
+          });
+        })
+        .catch(() => {
+          res.status(500).json({
+            statusCode: 500,
+            status: false,
+            message: "Failed to update orders.",
+          });
+        });
+    }
+  });
+};

@@ -34,6 +34,10 @@ const actiontypes = () => {
     },
     admin: {
       setUsers: "ADMIN_SET_USERS",
+      updateOrders: "ADMIN_UPDATE_ORDERS",
+      loading: "ADMIN_LOADING",
+      hasBeenSaved: "ADMIN_HAS_BEEN_SAVED",
+      clear: "ADMIN_CLEAR",
     },
   };
 };

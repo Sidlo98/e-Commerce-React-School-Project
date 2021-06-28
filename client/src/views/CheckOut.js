@@ -73,12 +73,16 @@ const CheckOut = () => {
 
   const handleOrder = (order) => {
     let todayDate = new Date();
+
+    let orderNumber = `WS${todayDate
+      .getFullYear()
+      .toString()
+      .slice(2)}${Math.floor(Math.random() * 100000)}`;
+
     if (isLoggedIn) {
       let newOrder = {
         ...order,
-        orderNumber: `WS${todayDate.getFullYear().toString().slice(2)}${Math.floor(
-          Math.random() * 100000
-        )}`,
+        orderNumber,
         date: `${todayDate.getDate()}/${
           todayDate.getMonth() + 1
         }/${todayDate.getFullYear()}`,
@@ -88,6 +92,8 @@ const CheckOut = () => {
         orderDelivered: false,
       };
       dispatch(addToOrder(newOrder, history));
+    } else {
+      history.push(`/thanks/${orderNumber}`);
     }
   };
 

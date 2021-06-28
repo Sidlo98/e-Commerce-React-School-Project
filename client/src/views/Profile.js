@@ -3,8 +3,10 @@ import { Card, Typography, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 // Else
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import OrderCard from "../components/profile/OrderCard";
+import { updateUser } from "../store/actions/userActions";
 // Styles
 const useStyles = makeStyles(() => ({
   root: {
@@ -20,8 +22,13 @@ const useStyles = makeStyles(() => ({
 
 const Profile = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userReducer.user);
+
+  useEffect(() => {
+    dispatch(updateUser());
+  }, [dispatch]);
 
   return (
     <>
