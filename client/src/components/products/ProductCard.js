@@ -51,7 +51,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Grid item xs={12} md={6} lg={4} xl={3}>
-      <Card>
+      <Card> 
         <Link to={`/products/${product._id}`} className={classes.link}>
           <CardActionArea>
             <CardMedia

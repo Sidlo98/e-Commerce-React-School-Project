@@ -43,7 +43,7 @@ const columns = [
     field: "orderProcessed",
     headerName: "Processing",
     type: "boolean",
-    width: 100,
+    width: 110,
     sortable: false,
     editable: true,
   },
