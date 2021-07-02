@@ -1,5 +1,5 @@
 const mongodb = require("mongoose");
-const Product = require("./productSchema");
+const Product = require("./ProductSchema");
 
 exports.getProducts = (req, res) => {
   Product.find({}, (err, data) => {

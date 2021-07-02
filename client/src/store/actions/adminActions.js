@@ -2,7 +2,7 @@ import actiontypes from "../actiontypes";
 import axios from "axios";
 import { store } from "../index";
 
-const baseUrl = "http://localhost:9999";
+const baseUrl = "https://ecommerce-react-school-project.herokuapp.com";
 
 export const getUsers = () => {
   return async (dispatch) => {

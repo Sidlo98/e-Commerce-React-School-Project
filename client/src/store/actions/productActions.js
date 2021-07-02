@@ -1,7 +1,7 @@
 import actiontypes from "../actiontypes";
 import axios from "axios";
 
-const baseUrl = "http://localhost:9999";
+const baseUrl = "https://ecommerce-react-school-project.herokuapp.com";
 
 export const getProduct = (id) => {
   return async (dispatch) => {

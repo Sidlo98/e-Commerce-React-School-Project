@@ -3,7 +3,7 @@ import { clearCart } from "./cartActions";
 import axios from "axios";
 import { store } from "../index";
 
-const baseUrl = "http://localhost:9999";
+const baseUrl = "https://ecommerce-react-school-project.herokuapp.com";
 
 export const registerUser = (user, history, errCallback) => {
   return (dispatch) => {
