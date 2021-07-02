@@ -1,5 +1,7 @@
 # e-Commerce-React-School-Project
 
+https://sidlowatchstore.netlify.app/products
+
 In this assignment, you will build a simple ecommerce page that is made with React.
 
 
