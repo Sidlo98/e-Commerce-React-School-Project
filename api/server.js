@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 8085;
-const serverURL = 'http://localhost:' + PORT;
+const serverURL = process.env.BASE_URL + PORT;
 const mongoURL = process.env.MONGO_URL
 
 app.listen(PORT, () => console.log(`Server us running at ${serverURL}`));
